@@ -9,8 +9,15 @@ import { Route, Switch, Router as WouterRouter, useLocation } from 'wouter';
 import logoPath from './assets/statusseller-logo.png';
 import stillLifePath from './assets/commerce-still-life.jpg';
 import laptopPath from './assets/commerce-laptop.jpg';
+import statusFlowPath from './assets/status-flow.png';
+import shopPopupPath from './assets/app-shop-popup.png';
+import statusProductPath from './assets/app-status-product.png';
+import chatCheckoutPath from './assets/app-chat-checkout.png';
+import cartPath from './assets/app-cart.png';
+import fullFlowPath from './assets/app-full-flow.png';
 
 const queryClient = new QueryClient();
+const WAITLIST_URL = 'https://forms.gle/sNHC68KJbZead3nq6';
 
 type IconType = typeof Store;
 
@@ -66,13 +73,14 @@ function Nav({ onAction }: { onAction: (message: string) => void }) {
         <Logo />
         <nav className="hidden items-center gap-8 text-sm font-semibold text-[#192541]/70 lg:flex" aria-label="Primary navigation">
           <button onClick={() => go('how-it-works')} className="transition hover:text-[#192541]" data-testid="nav-how-it-works">How it works</button>
-          <button onClick={() => go('for-businesses')} className="transition hover:text-[#192541]" data-testid="nav-for-businesses">For businesses</button>
+           <button onClick={() => go('for-businesses')} className="transition hover:text-[#192541]" data-testid="nav-for-businesses">For businesses</button>
+           <button onClick={() => go('app')} className="transition hover:text-[#192541]" data-testid="nav-app">The app</button>
           <button onClick={() => go('pricing')} className="transition hover:text-[#192541]" data-testid="nav-pricing">Pricing</button>
           <button onClick={() => go('stories')} className="transition hover:text-[#192541]" data-testid="nav-stories">Stories</button>
         </nav>
         <div className="hidden items-center gap-3 lg:flex">
           <button onClick={() => onAction('Demo workspace opening shortly')} className="rounded-full px-4 py-2 text-sm font-bold text-[#192541] transition hover:bg-[#192541]/5" data-testid="button-login">Log in</button>
-          <button onClick={() => go('cta')} className="group flex items-center gap-2 rounded-full bg-[#16b878] px-5 py-3 text-sm font-bold text-[#192541] shadow-[0_7px_0_#0c8054] transition hover:-translate-y-0.5 hover:shadow-[0_9px_0_#0c8054] active:translate-y-1 active:shadow-[0_3px_0_#0c8054]" data-testid="button-nav-start">Start selling <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" /></button>
+          <a href={WAITLIST_URL} target="_blank" rel="noreferrer" className="group flex items-center gap-2 rounded-full bg-[#16b878] px-5 py-3 text-sm font-bold text-[#192541] shadow-[0_7px_0_#0c8054] transition hover:-translate-y-0.5 hover:shadow-[0_9px_0_#0c8054] active:translate-y-1 active:shadow-[0_3px_0_#0c8054]" data-testid="button-nav-start">Join the waitlist <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" /></a>
         </div>
         <button className="rounded-xl p-2 text-[#192541] lg:hidden" onClick={() => setOpen(!open)} aria-label={open ? 'Close menu' : 'Open menu'} data-testid="button-mobile-menu">
           {open ? <X /> : <Menu />}
@@ -81,10 +89,10 @@ function Nav({ onAction }: { onAction: (message: string) => void }) {
       {open && (
         <div className="mx-4 rounded-2xl border border-[#192541]/10 bg-[#fbf9f3] p-4 shadow-xl lg:hidden" data-testid="mobile-navigation">
           <div className="grid gap-1 text-left text-sm font-semibold text-[#192541]">
-            {['how-it-works', 'for-businesses', 'pricing', 'stories'].map((id) => (
+            {['how-it-works', 'for-businesses', 'app', 'pricing', 'stories'].map((id) => (
               <button key={id} onClick={() => go(id)} className="rounded-xl px-4 py-3 text-left capitalize transition hover:bg-[#eaf6ee]" data-testid={`mobile-nav-${id}`}>{id.replaceAll('-', ' ')}</button>
             ))}
-            <button onClick={() => go('cta')} className="mt-2 rounded-xl bg-[#16b878] px-4 py-3 text-left font-bold" data-testid="mobile-nav-start">Start selling <ArrowRight className="ml-1 inline h-4 w-4" /></button>
+            <a href={WAITLIST_URL} target="_blank" rel="noreferrer" className="mt-2 rounded-xl bg-[#16b878] px-4 py-3 text-left font-bold" data-testid="mobile-nav-start">Join the waitlist <ArrowRight className="ml-1 inline h-4 w-4" /></a>
           </div>
         </div>
       )}
@@ -125,7 +133,7 @@ function ProductDemo({ stage, setStage, onAction }: { stage: number; setStage: (
       <div className="absolute -left-12 top-24 hidden h-40 w-40 rounded-full bg-[#a69be8]/40 blur-2xl lg:block" />
       <div className="relative overflow-hidden rounded-[38px] border-[9px] border-[#192541] bg-[#f8f7f1] phone-shadow">
         <div className="flex items-center justify-between bg-[#192541] px-6 pb-3 pt-2 text-[10px] font-bold text-[#f6f2e8]"><span>9:41</span><span className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-[#16b878]" /> StatusSeller</span><span>100%</span></div>
-        <div className="demo-scroll h-[510px] overflow-y-auto px-4 pb-6">
+        <div className="demo-scroll h-[430px] overflow-y-auto px-4 pb-6">
           <div className="flex items-center justify-between py-4"><div className="grid h-8 w-8 place-items-center rounded-full bg-[#f4a0b8] text-xs font-bold">N</div><p className="text-xs font-bold text-[#192541]">Nia’s Studio</p><button className="rounded-full bg-[#e8ecf4] p-2" aria-label="Add to favorites" data-testid="button-demo-favorite"><Plus className="h-3.5 w-3.5" /></button></div>
           {stage === 0 && <div className="animate-in fade-in slide-in-from-bottom-2 duration-500"><div className="overflow-hidden rounded-2xl"><img src={stillLifePath} alt="Linen co-ord set product" className="h-[205px] w-full object-cover" /></div><div className="pt-4"><p className="text-[10px] font-bold uppercase tracking-[.15em] text-[#16b878]">Just dropped</p><h3 className="mt-1 font-display text-2xl font-bold text-[#192541]">Linen co-ord set</h3><p className="mt-1 text-xs leading-relaxed text-[#192541]/55">A breezy two-piece for long lunches and longer weekends.</p><div className="mt-5 flex items-end justify-between"><div><p className="text-[10px] text-[#192541]/45">From</p><p className="font-display text-2xl font-bold text-[#192541]">KSh 3,850</p></div><button onClick={() => setStage(1)} className="rounded-xl bg-[#16b878] px-4 py-3 text-xs font-bold text-[#192541]" data-testid="button-demo-chat">Ask a question <MessageCircle className="ml-1 inline h-3.5 w-3.5" /></button></div></div></div>}
           {stage === 1 && <div className="animate-in fade-in slide-in-from-bottom-2 duration-500"><div className="mb-4 rounded-2xl bg-[#e9f6ee] p-4"><p className="text-[10px] font-bold uppercase tracking-[.15em] text-[#16b878]">Nia’s Studio is online</p><p className="mt-2 text-sm font-semibold leading-relaxed text-[#192541]">Hi! Is the blue set available in medium?</p></div><div className="space-y-3"><div className="ml-auto max-w-[80%] rounded-2xl rounded-br-sm bg-[#192541] p-3 text-xs text-[#f6f2e8]">Yes, medium is ready to ship. Want me to hold it for you?</div><div className="max-w-[80%] rounded-2xl rounded-bl-sm bg-[#e8ecf4] p-3 text-xs font-medium text-[#192541]">Could you do KSh 3,500 if I pay now?</div><div className="ml-auto max-w-[80%] rounded-2xl rounded-br-sm bg-[#a69be8]/30 p-3 text-xs font-semibold text-[#192541]">Let’s meet at KSh 3,650. I’ll include delivery to Westlands.</div></div><button onClick={() => setStage(2)} className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-[#16b878] py-3 text-xs font-bold text-[#192541]" data-testid="button-demo-accept">Accept KSh 3,650 <ArrowRight className="h-3.5 w-3.5" /></button></div>}
@@ -149,16 +157,16 @@ function TimelineItem({ title, detail, done = false }: { title: string; detail: 
 function Hero({ onAction }: { onAction: (message: string) => void }) {
   const [stage, setStage] = useState(0);
   return (
-    <section id="top" className="relative min-h-[790px] overflow-hidden bg-[#f6f2e8] pt-28 lg:pt-36">
+    <section id="top" className="relative min-h-[680px] overflow-hidden bg-[#f6f2e8] pt-24 lg:pt-28">
       <div className="absolute -right-20 top-8 h-[530px] w-[530px] rounded-full bg-[#e1daf8] opacity-60 blur-3xl" />
       <div className="absolute left-[42%] top-[30%] h-3 w-3 rounded-full bg-[#f8bf3c] glow-orb" />
-      <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 pb-16 lg:grid-cols-[.92fr_1.08fr] lg:px-10 lg:pb-24">
+      <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 pb-14 lg:grid-cols-[.92fr_1.08fr] lg:px-10 lg:pb-16">
         <div className="relative z-10">
           <div className="reveal flex items-center gap-2 text-xs font-bold uppercase tracking-[.2em] text-[#16b878]"><span className="h-2 w-2 rounded-full bg-[#16b878]" /> Social commerce, made human</div>
-          <h1 className="reveal delay-1 mt-6 max-w-[680px] font-display text-[clamp(3.4rem,7vw,6.9rem)] font-bold leading-[.91] tracking-[-.075em] text-[#192541]">Turn every<br /><span className="text-[#16b878]">social post</span><br />into a store<span className="text-[#f8bf3c]">.</span></h1>
-          <p className="reveal delay-2 mt-7 max-w-[475px] text-base leading-7 text-[#192541]/65 lg:text-lg">Your customers are already scrolling. Give them a reason to stop, chat, pay and come back — without ever leaving the post.</p>
-          <div className="reveal delay-3 mt-9 flex flex-wrap items-center gap-4">
-            <button onClick={() => { document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' }); onAction('Your free workspace is ready when you are'); }} className="group flex items-center gap-3 rounded-full bg-[#16b878] px-6 py-4 text-sm font-bold text-[#192541] shadow-[0_8px_0_#0c8054] transition hover:-translate-y-1 hover:shadow-[0_11px_0_#0c8054] active:translate-y-1 active:shadow-[0_3px_0_#0c8054]" data-testid="button-hero-start">Start selling free <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></button>
+          <h1 className="reveal delay-1 mt-5 max-w-[680px] font-display text-[clamp(3.2rem,6.4vw,6rem)] font-bold leading-[.91] tracking-[-.075em] text-[#192541]">Turn every<br /><span className="text-[#16b878]">social post</span><br />into a store<span className="text-[#f8bf3c]">.</span></h1>
+          <p className="reveal delay-2 mt-6 max-w-[475px] text-base leading-7 text-[#192541]/65 lg:text-lg">Views are attention. Sales are action. Give your customers a reason to stop, chat, pay and come back — without ever leaving the post.</p>
+          <div className="reveal delay-3 mt-7 flex flex-wrap items-center gap-4">
+            <a href={WAITLIST_URL} target="_blank" rel="noreferrer" className="group flex items-center gap-3 rounded-full bg-[#16b878] px-6 py-4 text-sm font-bold text-[#192541] shadow-[0_8px_0_#0c8054] transition hover:-translate-y-1 hover:shadow-[0_11px_0_#0c8054] active:translate-y-1 active:shadow-[0_3px_0_#0c8054]" data-testid="button-hero-start">Join the waitlist <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></a>
             <button onClick={() => onAction('Demo loaded — try the four steps on the right')} className="group flex items-center gap-2 rounded-full px-3 py-3 text-sm font-bold text-[#192541] transition hover:text-[#16b878]" data-testid="button-watch-demo"><span className="grid h-9 w-9 place-items-center rounded-full border border-[#192541]/20 transition group-hover:border-[#16b878] group-hover:bg-[#16b878]"><Play className="ml-0.5 h-3.5 w-3.5 fill-current" /></span> Watch the 60-sec demo</button>
           </div>
           <div className="reveal delay-3 mt-11 flex items-center gap-3 text-xs text-[#192541]/55"><div className="flex -space-x-2"><span className="grid h-7 w-7 place-items-center rounded-full border-2 border-[#f6f2e8] bg-[#f4a0b8] text-[9px] font-bold">AM</span><span className="grid h-7 w-7 place-items-center rounded-full border-2 border-[#f6f2e8] bg-[#a69be8] text-[9px] font-bold">JO</span><span className="grid h-7 w-7 place-items-center rounded-full border-2 border-[#f6f2e8] bg-[#f8bf3c] text-[9px] font-bold">SK</span></div><span>Join 2,400+ ambitious sellers<br /><strong className="text-[#192541]">across East Africa</strong></span></div>
@@ -197,6 +205,14 @@ function DashboardPreview() {
 }
 
 function DashStat({ label, value, up }: { label: string; value: string; up: string }) { return <div className="rounded-2xl bg-[#f0eee6] p-4"><p className="text-[10px] font-semibold text-[#192541]/50">{label}</p><p className="mt-2 font-display text-xl font-bold tracking-[-.04em] text-[#192541]">{value}</p><p className="mt-1 text-[10px] font-bold text-[#16b878]">{up}</p></div>; }
+
+function AppSection() {
+  return <section id="app" className="bg-[#fbf9f3] px-5 py-16 lg:px-10 lg:py-24"><div className="mx-auto max-w-7xl"><div className="grid items-end gap-8 lg:grid-cols-[.9fr_1.1fr]"><SectionIntro eyebrow="Meet the selling layer" title={<>Your status is<br /><span className="text-[#16b878]">already a storefront.</span></>} body="This is what customers see when a view becomes intent. One tap opens the product, the conversation, the offer and the checkout — all in the flow they already trust." /><div className="rounded-[24px] bg-[#192541] p-6 text-[#f6f2e8] shadow-[12px_12px_0_#f8bf3c]"><p className="text-xs font-bold uppercase tracking-[.18em] text-[#16b878]">The conversion gap</p><p className="mt-3 font-display text-3xl font-bold leading-tight">10,000 views can still mean zero orders.</p><p className="mt-3 text-sm leading-6 text-white/60">StatusSeller gives every interested viewer a next step before the moment disappears.</p></div></div><div className="mt-8 overflow-hidden rounded-[22px] border border-[#192541]/10 bg-[#f0eee6] p-2"><img src={statusFlowPath} alt="Five steps from viewing a status to confirming an order" className="h-auto w-full rounded-[16px]" /></div><div className="mt-8 grid gap-4 lg:grid-cols-[1.05fr_.95fr]"><div className="overflow-hidden rounded-[28px] bg-[#e9e6fa] p-3 shadow-[0_20px_50px_rgba(25,37,65,.1)]"><img src={fullFlowPath} alt="StatusSeller customer journey from status to confirmed order" className="h-auto w-full rounded-[20px]" /></div><div className="grid gap-4 sm:grid-cols-2"><div className="overflow-hidden rounded-[24px] bg-[#192541] p-3"><img src={statusProductPath} alt="Product status with Shop Now button" className="h-full w-full rounded-[17px] object-cover" /></div><div className="overflow-hidden rounded-[24px] bg-[#dff2e5] p-3"><img src={shopPopupPath} alt="Product popup with size and purchase options" className="h-full w-full rounded-[17px] object-cover" /></div><div className="overflow-hidden rounded-[24px] bg-[#f0eee6] p-3"><img src={cartPath} alt="Cart summary inside the StatusSeller popup" className="h-full w-full rounded-[17px] object-cover" /></div><div className="overflow-hidden rounded-[24px] bg-[#e7e2f8] p-3"><img src={chatCheckoutPath} alt="Chat negotiation and checkout screens" className="h-full w-full rounded-[17px] object-cover" /></div></div></div><div className="mt-7 grid gap-3 sm:grid-cols-3"><div className="rounded-2xl border border-[#192541]/10 bg-[#f0eee6] p-5"><p className="font-display text-3xl font-bold text-[#192541]">Views</p><p className="mt-1 text-sm text-[#192541]/55">become product interest</p></div><div className="rounded-2xl border border-[#192541]/10 bg-[#f0eee6] p-5"><p className="font-display text-3xl font-bold text-[#192541]">Chats</p><p className="mt-1 text-sm text-[#192541]/55">become qualified buyers</p></div><div className="rounded-2xl border border-[#192541]/10 bg-[#f0eee6] p-5"><p className="font-display text-3xl font-bold text-[#192541]">Orders</p><p className="mt-1 text-sm text-[#192541]/55">become trackable revenue</p></div></div></div></section>;
+}
+
+function Waitlist() {
+  return <section id="waitlist" className="bg-[#192541] px-5 py-16 text-[#f6f2e8] lg:px-10 lg:py-24"><div className="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[1fr_auto]"><div><p className="text-xs font-bold uppercase tracking-[.2em] text-[#f8bf3c]">Be early to the movement</p><h2 className="mt-4 max-w-3xl font-display text-[clamp(2.8rem,5vw,5rem)] font-bold leading-[.95] tracking-[-.07em]">Stop collecting views.<br /><span className="text-[#16b878]">Start collecting orders.</span></h2><p className="mt-5 max-w-xl text-base leading-7 text-white/60">Join the StatusSeller waitlist and be among the first businesses turning everyday social attention into measurable sales.</p></div><a href={WAITLIST_URL} target="_blank" rel="noreferrer" className="group flex items-center justify-center gap-3 rounded-full bg-[#16b878] px-7 py-4 text-sm font-bold text-[#192541] shadow-[0_8px_0_#0c8054] transition hover:-translate-y-1 hover:shadow-[0_11px_0_#0c8054]" data-testid="button-join-waitlist">Join now <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></a></div></section>;
+}
 
 function Stories() {
   return <section id="stories" className="bg-[#f6f2e8] px-5 py-24 lg:px-10 lg:py-32"><div className="mx-auto max-w-7xl"><div className="flex flex-col justify-between gap-7 md:flex-row md:items-end"><SectionIntro eyebrow="Built for the hustle" title={<>Small teams.<br /><span className="text-[#f07892]">Big movement.</span></>} body="The sellers using StatusSeller are not waiting for perfect. They are posting, replying and growing in public." /><div className="flex items-center gap-2 text-sm font-bold text-[#192541]"><span className="h-2 w-2 rounded-full bg-[#16b878]" /> Live seller stories</div></div><div className="mt-14 grid gap-4 md:grid-cols-[1.1fr_.9fr_.9fr]"><StoryCard name="Nia’s Studio" role="Contemporary womenswear" quote="My customers love that they can ask, negotiate and pay in the same place. It feels like me, just faster." accent="green" stat="3.2×" statLabel="more completed chats" image={stillLifePath} /><StoryCard name="Kipepeo Home" role="Handmade interiors" quote="I stopped losing orders in a sea of screenshots. Every sale has a name, a status and a next step." accent="purple" stat="41%" statLabel="fewer follow-up messages" image={laptopPath} compact /><div className="flex flex-col justify-between rounded-[26px] bg-[#f8bf3c] p-7 text-[#192541]"><div><Tag className="h-7 w-7" /><p className="mt-20 font-display text-[2rem] font-bold leading-[.97] tracking-[-.06em]">Make your next post a little more powerful.</p></div><button onClick={() => document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' })} className="mt-8 flex items-center justify-between border-t border-[#192541]/20 pt-4 text-sm font-bold" data-testid="button-story-cta">See what’s possible <ArrowRight className="h-4 w-4" /></button></div></div></div></section>;
@@ -243,7 +259,7 @@ function Home() {
     revealNodes.forEach((node) => observer.observe(node));
     return () => observer.disconnect();
   }, []);
-  return <main className="page-shell grain min-h-[100dvh]"><Nav onAction={notify} /><Hero onAction={(message) => { if (message.includes('Demo')) setShowDemo(true); else notify(message); }} /><HowItWorks /><BusinessSection onAction={notify} /><Stories /><Pricing onAction={notify} /><CTA onAction={notify} /><Footer onAction={notify} />{notice && <Notice message={notice} onClose={() => setNotice(null)} />}{showDemo && <DemoModal onClose={() => setShowDemo(false)} />}</main>;
+   return <main className="page-shell grain min-h-[100dvh]"><Nav onAction={notify} /><Hero onAction={(message) => { if (message.includes('Demo')) setShowDemo(true); else notify(message); }} /><HowItWorks /><BusinessSection onAction={notify} /><AppSection /><Waitlist /><Stories /><Pricing onAction={notify} /><CTA onAction={notify} /><Footer onAction={notify} />{notice && <Notice message={notice} onClose={() => setNotice(null)} />}{showDemo && <DemoModal onClose={() => setShowDemo(false)} />}</main>;
 }
 
 function Router() {
