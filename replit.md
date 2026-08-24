@@ -1,10 +1,11 @@
-# [Project name]
+# StatusSeller
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+StatusSeller is a product-led landing page showing how social posts become shoppable conversations, payments, and managed orders.
 
 ## Run & Operate
 
 - `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
+- `pnpm --filter @workspace/statusseller-site run dev` — run the landing page (workflow supplies `PORT` and `BASE_PATH`)
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
@@ -19,26 +20,33 @@ _Replace the heading above with the project's name, and this line with one sente
 - Validation: Zod (`zod/v4`), `drizzle-zod`
 - API codegen: Orval (from OpenAPI spec)
 - Build: esbuild (CJS bundle)
+- Landing page: React + Vite + Tailwind CSS + Framer Motion
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/statusseller-site/src/App.tsx` — single-page StatusSeller marketing experience
+- `artifacts/statusseller-site/src/index.css` — site theme, responsive styles, motion, and visual tokens
+- `artifacts/statusseller-site/src/assets/` — copied brand and commerce imagery
+- `render.yaml` / `RENDER.md` — Render Static Site configuration and Base URL guidance
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- The first version is frontend-only; the API server remains available for future product flows but is not required by the landing page.
+- Render deployment uses a Static Site with the Vite output directory, so there is no runtime server to configure.
+- The hero demonstrates the full product promise in place: social post, shop popup, chat, payment, and order tracking.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+The page explains StatusSeller's social-commerce workflow, shows an interactive shopping demo, presents seller-side dashboard concepts, supports pricing-period switching, opens a demo modal, and captures CTA email intent with inline feedback.
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+The user wants the landing page to feel fancy, product-led, and easy to deploy on Render.
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- Vite's config requires `PORT` and `BASE_PATH`; Render's build command sets both explicitly.
+- The production Base URL is the deployed Render hostname (for example `https://statusseller-site.onrender.com`), not the Replit preview URL or `/api`.
 
 ## Pointers
 

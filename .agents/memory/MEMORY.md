@@ -1,0 +1,1 @@
+- [Render static hosting](render-static-sites.md) — the landing page deploys as a Render Static Site; its public Base URL is the deployed HTTPS hostname.
