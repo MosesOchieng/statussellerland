@@ -413,6 +413,24 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @media (min-width: 1024px) {
   .page-shell > section:not(#top) { padding-block: 6rem; }
 }
+/* Keep the landing page editorial, but let more of the product story fit in view. */
+.page-shell #top { min-height: 0; }
+.page-shell #top > .mx-auto { padding-bottom: 3.5rem; }
+.page-shell #top h1 { font-size: clamp(2.8rem, 5.3vw, 5rem); }
+.page-shell #top .demo-scroll { height: 360px; }
+.page-shell #top .demo-scroll img { max-height: 165px; }
+.page-shell #top + section .mt-16 { margin-top: 2.5rem; }
+.page-shell section h2 { font-size: clamp(2.2rem, 4.2vw, 4.25rem); }
+.page-shell section .mt-14 { margin-top: 2.5rem; }
+.page-shell section .mt-20 { margin-top: 3.5rem; }
+@media (max-width: 767px) {
+  .page-shell > section:not(#top) { padding-block: 3.25rem; }
+  .page-shell #top > .mx-auto { padding-bottom: 2.5rem; }
+  .page-shell #top h1 { font-size: clamp(2.65rem, 13vw, 4rem); }
+  .page-shell #top .demo-scroll { height: 330px; }
+  .page-shell #top .demo-scroll img { max-height: 155px; }
+  .page-shell section .mt-20 { margin-top: 2.5rem; }
+}
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
 }
