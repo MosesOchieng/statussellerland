@@ -409,27 +409,67 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @keyframes orb-pulse { 0%,100% { opacity: .55; transform: scale(1); } 50% { opacity: .85; transform: scale(1.08); } }
 .demo-phone { max-width: 360px; border: 9px solid #192541; border-radius: 36px; }
 .demo-scroll::-webkit-scrollbar { width: 0; height: 0; }
-.page-shell > section:not(#top) { padding-block: 4rem; }
+.page-shell > section:not(#top) { padding-block: 2.75rem; }
 @media (min-width: 1024px) {
-  .page-shell > section:not(#top) { padding-block: 6rem; }
+  .page-shell > section:not(#top) { padding-block: 4rem; }
 }
 /* Keep the landing page editorial, but let more of the product story fit in view. */
 .page-shell #top { min-height: 0; }
-.page-shell #top > .mx-auto { padding-bottom: 3.5rem; }
-.page-shell #top h1 { font-size: clamp(2.8rem, 5.3vw, 5rem); }
-.page-shell #top .demo-scroll { height: 360px; }
-.page-shell #top .demo-scroll img { max-height: 165px; }
+.page-shell #top > .mx-auto { padding-bottom: 2.5rem; }
+.page-shell #top h1 { font-size: clamp(2.65rem, 4.8vw, 4.6rem); }
+.page-shell #top .demo-scroll { height: 325px; }
+.page-shell #top .demo-scroll img { max-height: 150px; }
 .page-shell #top + section .mt-16 { margin-top: 2.5rem; }
-.page-shell section h2 { font-size: clamp(2.2rem, 4.2vw, 4.25rem); }
-.page-shell section .mt-14 { margin-top: 2.5rem; }
-.page-shell section .mt-20 { margin-top: 3.5rem; }
+.page-shell section h2 { font-size: clamp(2.05rem, 3.7vw, 3.7rem); }
+.page-shell section .mt-14 { margin-top: 2rem; }
+.page-shell section .mt-20 { margin-top: 2.75rem; }
+.page-shell section .gap-14 { gap: 2.25rem; }
+.page-shell section .gap-12 { gap: 2rem; }
+.page-shell section .p-7 { padding: 1.35rem; }
+.page-shell section .p-6 { padding: 1.25rem; }
+
+/* Motion system: layered, quiet movement that keeps the product feeling alive. */
+.page-shell #top::before {
+  content: "";
+  position: absolute;
+  width: 28rem;
+  height: 28rem;
+  left: 30%;
+  top: 12%;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(22,184,120,.13), transparent 68%);
+  animation: ambient-drift 11s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+.page-shell #top > .mx-auto > div:last-child { animation: hero-settle .9s ease-out both; }
+.page-shell #top .phone-shadow { animation: phone-breathe 6s ease-in-out infinite; }
+.page-shell #top .phone-shadow:hover { animation-play-state: paused; }
+.page-shell #top > .mx-auto > div:last-child > div:first-child { animation: card-float 5.5s ease-in-out infinite; }
+.page-shell #top + section article:nth-child(1) { animation: card-float 6s ease-in-out 0.2s infinite; }
+.page-shell #top + section article:nth-child(2) { animation: card-float 6s ease-in-out 0.8s infinite; }
+.page-shell #top + section article:nth-child(3) { animation: card-float 6s ease-in-out 1.4s infinite; }
+.page-shell #app img {
+  image-rendering: auto;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  transition: transform .65s cubic-bezier(.2,.8,.2,1), filter .65s ease;
+}
+.page-shell #app img:hover { transform: scale(1.025); filter: saturate(1.08) contrast(1.04); }
+.page-shell #app > div > div:nth-child(2) img { box-shadow: 0 12px 28px rgba(25,37,65,.12); }
+.page-shell #pricing table tbody tr { transition: background-color .25s ease; }
+.page-shell #pricing table tbody tr:hover { background-color: rgba(22,184,120,.07); }
+@keyframes ambient-drift { from { transform: translate3d(-2rem, 0, 0) scale(.92); } to { transform: translate3d(3rem, 2rem, 0) scale(1.08); } }
+@keyframes hero-settle { from { opacity: 0; transform: translateY(14px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes phone-breathe { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-7px) rotate(.35deg); } }
+@keyframes card-float { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-8px) rotate(-1deg); } }
 @media (max-width: 767px) {
-  .page-shell > section:not(#top) { padding-block: 3.25rem; }
-  .page-shell #top > .mx-auto { padding-bottom: 2.5rem; }
-  .page-shell #top h1 { font-size: clamp(2.65rem, 13vw, 4rem); }
-  .page-shell #top .demo-scroll { height: 330px; }
-  .page-shell #top .demo-scroll img { max-height: 155px; }
-  .page-shell section .mt-20 { margin-top: 2.5rem; }
+  .page-shell > section:not(#top) { padding-block: 2.25rem; }
+  .page-shell #top > .mx-auto { padding-bottom: 2rem; }
+  .page-shell #top h1 { font-size: clamp(2.5rem, 12.5vw, 3.6rem); }
+  .page-shell #top .demo-scroll { height: 300px; }
+  .page-shell #top .demo-scroll img { max-height: 140px; }
+  .page-shell section .mt-20 { margin-top: 2.25rem; }
+  .page-shell #top::before { left: -20%; top: 18%; width: 24rem; height: 24rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
