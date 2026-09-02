@@ -19,6 +19,9 @@ import facebookLogoPath from './assets/facebook-logo.webp';
 import sellerLaptopPath from './assets/seller-laptop.jpg';
 import sellerPhonePath from './assets/seller-phone.jpg';
 import sellerCheckoutPath from './assets/seller-checkout.jpg';
+import xLogoPath from './assets/x-logo.png';
+import instagramLogoPath from './assets/instagram-logo.jpeg';
+import tiktokLogoPath from './assets/tiktok-logo.png';
 
 const queryClient = new QueryClient();
 const WAITLIST_URL = 'https://forms.gle/sNHC68KJbZead3nq6';
@@ -194,9 +197,9 @@ type Platform = 'Facebook' | 'Instagram' | 'TikTok' | 'X';
 
 function PlatformMark({ platform }: { platform: Platform }) {
   if (platform === 'Facebook') return <img src={facebookLogoPath} alt="" className="h-9 w-9 rounded-full object-cover" />;
-  if (platform === 'Instagram') return <span className="instagram-mark grid h-9 w-9 place-items-center rounded-[11px]"><span className="relative h-5 w-5 rounded-[6px] border-[2px] border-white"><span className="absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white" /><span className="absolute right-0.5 top-0.5 h-1 w-1 rounded-full bg-white" /></span></span>;
-  if (platform === 'TikTok') return <span className="tiktok-mark relative grid h-9 w-9 place-items-center rounded-full bg-[#10131c] text-xl font-black text-white"><span className="absolute -left-0.5 top-1 text-[#25f4ee]">♪</span><span className="absolute left-0.5 top-0 text-[#fe2c55]">♪</span><span className="relative">♪</span></span>;
-  return <span className="grid h-9 w-9 place-items-center rounded-full bg-[#192541] text-lg font-bold text-white">𝕏</span>;
+  if (platform === 'Instagram') return <span className="grid h-9 w-9 place-items-center overflow-hidden rounded-[11px] bg-white"><img src={instagramLogoPath} alt="" className="h-full w-full scale-[1.75] object-contain" /></span>;
+  if (platform === 'TikTok') return <img src={tiktokLogoPath} alt="" className="h-9 w-9 rounded-full bg-[#050505] object-cover" />;
+  return <img src={xLogoPath} alt="" className="h-9 w-9 rounded-full bg-white object-contain p-1" />;
 }
 
 function SocialSellingSection() {
