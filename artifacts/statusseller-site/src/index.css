@@ -510,7 +510,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .page-shell #pricing table tbody tr { transition: background-color .25s ease; }
 .page-shell #pricing table tbody tr:hover { background-color: rgba(22,184,120,.07); }
 .page-shell #pricing > div::after {
-  content: "How the model works: the monthly plan covers your storefront, automation, support, and included AI usage. A small success fee applies only when an order is completed, so platform costs scale with revenue—not views. High-volume AI generation is managed with fair-use limits or usage-based top-ups.";
+  content: "Simple model: try the full platform free for 14 days, then choose Seller or Pro Seller. Your subscription includes monthly AI creations, and extra credits are available only when you need them. You keep 100% of every sale.";
   display: block;
   margin-top: 1rem;
   max-width: 920px;

@@ -37,7 +37,7 @@ StatusSeller is a product-led landing page showing how social posts become shopp
 
 ## Product
 
-The page explains StatusSeller's social-commerce workflow, shows an interactive shopping demo, presents seller-side dashboard concepts, includes the full Starter/Growth/Pro pricing matrix with KES/USD/NGN/ZAR switching, opens a demo modal, and captures waitlist/CTA intent with inline feedback.
+The page explains StatusSeller's social-commerce workflow, shows an interactive shopping demo, presents seller-side dashboard concepts, includes the 14-day Trial/Seller/Pro Seller pricing journey with included AI credits and KES/USD/NGN/ZAR switching, opens a demo modal, and captures waitlist/CTA intent with inline feedback. The pricing model is SaaS plus metered AI credits; sellers keep 100% of their sales.
 
 The landing page intentionally uses compact responsive spacing so the hero, product journey, and conversion story are easier to scan without excessive scrolling.
 

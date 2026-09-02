@@ -11,7 +11,9 @@ payments, and trackable orders.
   and order tracking
 - App walkthrough using the supplied product screenshots
 - Seller dashboard preview and conversion-focused messaging
-- Starter, Growth, and Pro pricing comparison
+- 14-day Trial, Seller, and Pro Seller pricing comparison
+- Included AI creation credits with pay-as-you-go extra credits
+- Zero platform fee on seller sales
 - Monthly/annual billing toggle
 - Currency switcher for KES, USD, NGN, and ZAR
 - Google Forms waitlist CTAs
