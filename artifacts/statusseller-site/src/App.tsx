@@ -204,6 +204,20 @@ function PlatformMark({ platform }: { platform: Platform }) {
 }
 
 function SocialSellingSection({ onOpen }: { onOpen: () => void }) {
+  const hasAutoOpened = useRef(false);
+  useEffect(() => {
+    const section = document.getElementById('channels');
+    if (!section || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !hasAutoOpened.current) {
+        hasAutoOpened.current = true;
+        window.setTimeout(onOpen, 1800);
+        observer.disconnect();
+      }
+    }, { threshold: 0.35 });
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, [onOpen]);
   const platforms: { name: Platform; detail: string; copy: string }[] = [
     { name: 'Facebook', detail: 'Posts & groups', copy: 'Turn product posts into a tap-to-shop storefront.' },
     { name: 'Instagram', detail: 'Stories & posts', copy: 'Give every drop a direct path to chat and checkout.' },
@@ -328,6 +342,10 @@ function StatusFlowModal({ onClose, onAction }: { onClose: () => void; onAction:
     window.addEventListener('keydown', handleKeyDown);
     return () => { document.body.style.overflow = previousOverflow; window.removeEventListener('keydown', handleKeyDown); };
   }, [onClose]);
+  useEffect(() => {
+    const timer = window.setInterval(() => setStage((current) => (current + 1) % 4), 3600);
+    return () => window.clearInterval(timer);
+  }, []);
   return <div className="fixed inset-0 z-50 grid place-items-center bg-[#192541]/80 p-3 backdrop-blur-md sm:p-6" role="dialog" aria-modal="true" aria-label="Interactive StatusSeller selling flow" data-testid="status-flow-modal" onMouseDown={(event) => { if (event.target === event.currentTarget) onClose(); }}><div className="relative max-h-[calc(100dvh-1.5rem)] w-full max-w-5xl overflow-y-auto rounded-[30px] bg-[#f6f2e8] shadow-2xl sm:max-h-[calc(100dvh-3rem)]"><button onClick={onClose} className="absolute right-4 top-4 z-20 grid h-9 w-9 place-items-center rounded-full bg-[#192541] text-[#f6f2e8] transition hover:scale-105" aria-label="Close selling flow" data-testid="button-close-status-flow"><X className="h-4 w-4" /></button><div className="grid md:grid-cols-[.78fr_1.22fr]"><div className="relative min-h-[360px] overflow-hidden bg-[#192541] p-6 text-[#f6f2e8] sm:p-9 md:min-h-[650px]"><img src={sellerPhonePath} alt="Seller using a phone to manage a social post" className="absolute inset-0 h-full w-full object-cover opacity-65" /><div className="absolute inset-0 bg-gradient-to-t from-[#192541] via-[#192541]/45 to-[#192541]/5" /><div className="relative flex h-full min-h-[310px] flex-col justify-between"><div><p className="text-[10px] font-bold uppercase tracking-[.2em] text-[#f8bf3c]">One post. One selling layer.</p><div className="mt-5 flex w-fit items-center gap-2 rounded-full border border-white/20 bg-[#192541]/35 px-3 py-2 text-xs font-bold backdrop-blur-sm"><span className="h-2 w-2 rounded-full bg-[#16b878] shadow-[0_0_0_5px_rgba(22,184,120,.18)]" /> Nia’s Studio is online</div></div><div><p className="max-w-sm font-display text-4xl font-bold leading-[.95] tracking-[-.06em] sm:text-5xl">Tap once.<br /><span className="text-[#16b878]">Sell in flow.</span></p><p className="mt-5 max-w-sm text-sm leading-6 text-white/65">No screenshots to chase. No customer to send elsewhere. Just a calm path from interest to order.</p><div className="mt-6 flex items-center gap-2 text-xs font-bold text-[#f8bf3c]"><MousePointer2 className="h-4 w-4" /> Try the steps on the right</div></div></div></div><div className="p-5 sm:p-8 md:p-10"><p className="text-xs font-bold uppercase tracking-[.18em] text-[#16b878]">The StatusSeller process</p><h2 className="mt-4 max-w-xl font-display text-4xl font-bold leading-[.95] tracking-[-.06em] text-[#192541] sm:text-5xl">From “shop now”<br /><span className="text-[#a25dd1]">to sold.</span></h2><p className="mt-5 max-w-xl text-sm leading-6 text-[#192541]/60">The product, the conversation, the offer and the checkout stay connected in one customer journey.</p><div className="mt-7 grid grid-cols-4 gap-1 rounded-2xl border border-[#192541]/10 bg-white/45 p-1.5">{stages.map(({ label, detail, icon: Icon }, index) => <button type="button" key={label} onClick={() => setStage(index)} className={`rounded-xl px-1 py-3 text-center transition ${stage === index ? 'bg-[#192541] text-[#f6f2e8] shadow-lg' : 'text-[#192541]/50 hover:bg-[#e8ecf4]'}`} aria-label={`${label}: ${detail}`} aria-current={stage === index ? 'step' : undefined} data-testid={`button-status-flow-stage-${index}`}><Icon className={`mx-auto mb-1.5 h-4 w-4 ${stage === index ? 'text-[#16b878]' : ''}`} /><span className="block text-[10px] font-bold uppercase tracking-[.06em]">{label}</span></button>)}</div><div className="mt-7 rounded-[26px] bg-[#e7f5ea] p-3 sm:p-5"><ProductDemo stage={stage} setStage={setStage} onAction={onAction} /></div><div className="mt-5 flex items-center justify-between gap-4 border-t border-[#192541]/10 pt-4"><p className="text-xs leading-5 text-[#192541]/55"><strong className="text-[#192541]">{stages[stage].label}:</strong> {stages[stage].detail}. Tap any step to explore.</p><button type="button" onClick={onClose} className="shrink-0 rounded-full border border-[#192541]/15 px-4 py-2 text-xs font-bold text-[#192541] transition hover:bg-white" data-testid="button-close-flow-secondary">Close</button></div></div></div></div></div>;
 }
 
