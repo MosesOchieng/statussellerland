@@ -156,6 +156,11 @@ function TimelineItem({ title, detail, done = false }: { title: string; detail: 
 
 function Hero({ onAction }: { onAction: (message: string) => void }) {
   const [stage, setStage] = useState(0);
+  const [storyWord, setStoryWord] = useState<'story' | 'post'>('story');
+  useEffect(() => {
+    const timer = window.setInterval(() => setStoryWord((word) => word === 'story' ? 'post' : 'story'), 2600);
+    return () => window.clearInterval(timer);
+  }, []);
   return (
     <section id="top" className="relative min-h-[680px] overflow-hidden bg-[#f6f2e8] pt-24 lg:pt-28">
       <div className="absolute -right-20 top-8 h-[530px] w-[530px] rounded-full bg-[#e1daf8] opacity-60 blur-3xl" />
@@ -163,8 +168,8 @@ function Hero({ onAction }: { onAction: (message: string) => void }) {
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 pb-14 lg:grid-cols-[.92fr_1.08fr] lg:px-10 lg:pb-16">
         <div className="relative z-10">
           <div className="reveal flex items-center gap-2 text-xs font-bold uppercase tracking-[.2em] text-[#16b878]"><span className="h-2 w-2 rounded-full bg-[#16b878]" /> Social commerce, made human</div>
-          <h1 className="reveal delay-1 mt-5 max-w-[680px] font-display text-[clamp(3.2rem,6.4vw,6rem)] font-bold leading-[.91] tracking-[-.075em] text-[#192541]">Turn every<br /><span className="text-[#16b878]">social post</span><br />into a store<span className="text-[#f8bf3c]">.</span></h1>
-          <p className="reveal delay-2 mt-6 max-w-[475px] text-base leading-7 text-[#192541]/65 lg:text-lg">Views are attention. Sales are action. Give your customers a reason to stop, chat, pay and come back — without ever leaving the post.</p>
+          <h1 className="reveal delay-1 mt-5 max-w-[680px] font-display text-[clamp(3.2rem,6.4vw,6rem)] font-bold leading-[.91] tracking-[-.075em] text-[#192541]">Turn every<br /><span className="text-[#16b878]">social <span key={storyWord} className="headline-swap inline-block min-w-[2.65em]">{storyWord}</span></span><br />into a store<span className="text-[#f8bf3c]">.</span></h1>
+          <p className="reveal delay-2 mt-6 max-w-[475px] text-base leading-7 text-[#192541]/65 lg:text-lg">Views are attention. Sales are actions. Give your customers an instant way to browse, chat and shop directly from your status/post with a single tap.</p>
           <div className="reveal delay-3 mt-7 flex flex-wrap items-center gap-4">
             <a href={WAITLIST_URL} target="_blank" rel="noreferrer" className="group flex items-center gap-3 rounded-full bg-[#16b878] px-6 py-4 text-sm font-bold text-[#192541] shadow-[0_8px_0_#0c8054] transition hover:-translate-y-1 hover:shadow-[0_11px_0_#0c8054] active:translate-y-1 active:shadow-[0_3px_0_#0c8054]" data-testid="button-hero-start">Join the waitlist <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></a>
             <button onClick={() => onAction('Demo loaded — try the four steps on the right')} className="group flex items-center gap-2 rounded-full px-3 py-3 text-sm font-bold text-[#192541] transition hover:text-[#16b878]" data-testid="button-watch-demo"><span className="grid h-9 w-9 place-items-center rounded-full border border-[#192541]/20 transition group-hover:border-[#16b878] group-hover:bg-[#16b878]"><Play className="ml-0.5 h-3.5 w-3.5 fill-current" /></span> Watch the 60-sec demo</button>
