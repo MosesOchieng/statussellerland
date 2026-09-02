@@ -17,6 +17,8 @@ payments, and trackable orders.
 - Monthly/annual billing toggle
 - Currency switcher for KES, USD, NGN, and ZAR
 - Google Forms waitlist CTAs
+- Social-selling channel cards for Facebook, Instagram, TikTok, and X
+- Seller story imagery and a card-required trial safeguard
 - Render Static Site configuration
 
 ## Run locally

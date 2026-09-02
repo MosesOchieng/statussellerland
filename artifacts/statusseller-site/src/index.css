@@ -450,9 +450,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .page-shell #top .phone-shadow { animation: phone-breathe 6s ease-in-out infinite; }
 .page-shell #top .phone-shadow:hover { animation-play-state: paused; }
 .page-shell #top > .mx-auto > div:last-child > div:first-child { animation: card-float 5.5s ease-in-out infinite; }
-.page-shell #top + section article:nth-child(1) { animation: card-float 6s ease-in-out 0.2s infinite; }
-.page-shell #top + section article:nth-child(2) { animation: card-float 6s ease-in-out 0.8s infinite; }
-.page-shell #top + section article:nth-child(3) { animation: card-float 6s ease-in-out 1.4s infinite; }
+.page-shell #how-it-works article:nth-child(1) { animation: card-float 6s ease-in-out 0.2s infinite; }
+.page-shell #how-it-works article:nth-child(2) { animation: card-float 6s ease-in-out 0.8s infinite; }
+.page-shell #how-it-works article:nth-child(3) { animation: card-float 6s ease-in-out 1.4s infinite; }
+.instagram-mark { background: linear-gradient(135deg, #f9ce34 0%, #ee2a7b 48%, #6228d7 100%); }
 .headline-swap { animation: headline-swap .55s cubic-bezier(.2,.8,.2,1) both; }
 .page-shell #app img {
   image-rendering: auto;
