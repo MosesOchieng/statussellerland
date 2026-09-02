@@ -481,6 +481,22 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .page-shell #channels article:hover::after { transform: translateX(520%) skewX(-18deg); }
 .page-shell #channels article { isolation: isolate; }
 .page-shell #channels article > * { position: relative; z-index: 1; }
+.page-shell #channels article > .shop-cursor {
+  position: absolute;
+  z-index: 2;
+  animation: shop-cursor-drift 2.8s ease-in-out infinite;
+}
+.page-shell #channels article:hover > .shop-cursor { animation-play-state: paused; }
+.shop-now-button { position: relative; overflow: hidden; }
+.shop-now-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,.7) 48%, transparent 72%);
+  transform: translateX(-140%);
+  transition: transform .7s ease;
+}
+.shop-now-button:hover::after { transform: translateX(140%); }
 .page-shell #app img {
   image-rendering: auto;
   backface-visibility: hidden;
@@ -553,6 +569,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @keyframes hero-settle { from { opacity: 0; transform: translateY(14px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
 @keyframes phone-breathe { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-7px) rotate(.35deg); } }
 @keyframes card-float { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-8px) rotate(-1deg); } }
+@keyframes shop-cursor-drift { 0%,100% { transform: translate(7px, 0); } 45% { transform: translate(-2px, 9px); } 58% { transform: translate(-2px, 9px) scale(.88); } 70% { transform: translate(-2px, 9px) scale(1); } }
 @keyframes headline-swap { from { opacity: 0; transform: translateY(.35em); filter: blur(4px); } to { opacity: 1; transform: translateY(0); filter: blur(0); } }
 @keyframes channel-card-in { from { opacity: .55; transform: translateY(14px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
 @keyframes image-breathe { from { transform: scale(1); filter: saturate(.92); } to { transform: scale(1.045); filter: saturate(1.08); } }
