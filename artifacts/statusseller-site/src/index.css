@@ -409,24 +409,29 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @keyframes orb-pulse { 0%,100% { opacity: .55; transform: scale(1); } 50% { opacity: .85; transform: scale(1.08); } }
 .demo-phone { max-width: 360px; border: 9px solid #192541; border-radius: 36px; }
 .demo-scroll::-webkit-scrollbar { width: 0; height: 0; }
-.page-shell > section:not(#top) { padding-block: 2.75rem; }
+.page-shell > section:not(#top) { padding-block: 1.75rem; }
 @media (min-width: 1024px) {
-  .page-shell > section:not(#top) { padding-block: 4rem; }
+  .page-shell > section:not(#top) { padding-block: 2.75rem; }
 }
 /* Keep the landing page editorial, but let more of the product story fit in view. */
 .page-shell #top { min-height: 0; }
-.page-shell #top > .mx-auto { padding-bottom: 2.5rem; }
-.page-shell #top h1 { font-size: clamp(2.65rem, 4.8vw, 4.6rem); }
-.page-shell #top .demo-scroll { height: 325px; }
-.page-shell #top .demo-scroll img { max-height: 150px; }
-.page-shell #top + section .mt-16 { margin-top: 2.5rem; }
-.page-shell section h2 { font-size: clamp(2.05rem, 3.7vw, 3.7rem); }
-.page-shell section .mt-14 { margin-top: 2rem; }
-.page-shell section .mt-20 { margin-top: 2.75rem; }
-.page-shell section .gap-14 { gap: 2.25rem; }
-.page-shell section .gap-12 { gap: 2rem; }
-.page-shell section .p-7 { padding: 1.35rem; }
-.page-shell section .p-6 { padding: 1.25rem; }
+.page-shell #top > .mx-auto { padding-bottom: 1.5rem; }
+.page-shell #top h1 { font-size: clamp(2.5rem, 4.5vw, 4.2rem); }
+.page-shell #top .demo-scroll { height: 290px; }
+.page-shell #top .demo-scroll img { max-height: 135px; }
+.page-shell #top + section .mt-16 { margin-top: 1.5rem; }
+.page-shell section h2 { font-size: clamp(2rem, 3.3vw, 3.35rem); }
+.page-shell section .mt-14,
+.page-shell section .mt-12,
+.page-shell section .mt-10 { margin-top: 1.5rem; }
+.page-shell section .mt-9 { margin-top: 1.25rem; }
+.page-shell section .mt-20 { margin-top: 2rem; }
+.page-shell section .gap-14,
+.page-shell section .gap-12 { gap: 1.5rem; }
+.page-shell section .gap-8 { gap: 1.25rem; }
+.page-shell section .p-7 { padding: 1.1rem; }
+.page-shell section .p-6 { padding: 1rem; }
+.page-shell section article h3.mt-20 { margin-top: 3.5rem; }
 
 /* Motion system: layered, quiet movement that keeps the product feeling alive. */
 .page-shell #top::before {
@@ -461,28 +466,28 @@ button, a { -webkit-tap-highlight-color: transparent; }
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 420px;
-  padding: 1.25rem;
+  min-height: 300px;
+  padding: .75rem;
   background: linear-gradient(145deg, #ede9ff 0%, #dfe9f4 100%);
 }
 .page-shell #app > div > div:nth-child(3) > div:first-child img {
   width: 100%;
-  max-height: 390px;
+  max-height: 285px;
   object-fit: contain;
   filter: drop-shadow(0 18px 24px rgba(25,37,65,.16));
 }
 .page-shell #app > div > div:nth-child(3) > div:nth-child(2) {
-  grid-auto-rows: minmax(250px, 1fr);
+  grid-auto-rows: minmax(190px, 1fr);
 }
 .page-shell #app > div > div:nth-child(3) > div:nth-child(2) > div {
   position: relative;
   display: flex;
-  min-height: 250px;
+  min-height: 190px;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   isolation: isolate;
-  padding: 1.1rem;
+  padding: .7rem;
 }
 .page-shell #app > div > div:nth-child(3) > div:nth-child(2) > div::before {
   content: "";
@@ -497,7 +502,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .page-shell #app > div > div:nth-child(3) > div:nth-child(2) img {
   width: 100%;
   height: auto !important;
-  max-height: 330px;
+  max-height: 260px;
   object-fit: contain !important;
   filter: drop-shadow(0 16px 16px rgba(25,37,65,.18));
 }
@@ -508,18 +513,22 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @keyframes phone-breathe { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-7px) rotate(.35deg); } }
 @keyframes card-float { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-8px) rotate(-1deg); } }
 @media (max-width: 767px) {
-  .page-shell > section:not(#top) { padding-block: 2.25rem; }
-  .page-shell #top > .mx-auto { padding-bottom: 2rem; }
-  .page-shell #top h1 { font-size: clamp(2.5rem, 12.5vw, 3.6rem); }
-  .page-shell #top .demo-scroll { height: 300px; }
-  .page-shell #top .demo-scroll img { max-height: 140px; }
-  .page-shell section .mt-20 { margin-top: 2.25rem; }
+  .page-shell > section:not(#top) { padding-block: 1.5rem; }
+  .page-shell #top > .mx-auto { padding-bottom: 1.25rem; }
+  .page-shell #top h1 { font-size: clamp(2.35rem, 12vw, 3.4rem); }
+  .page-shell #top .demo-scroll { height: 270px; }
+  .page-shell #top .demo-scroll img { max-height: 125px; }
+  .page-shell section .mt-20 { margin-top: 1.75rem; }
+  .page-shell section .mt-14,
+  .page-shell section .mt-12,
+  .page-shell section .mt-10 { margin-top: 1.25rem; }
+  .page-shell section .p-7 { padding: .9rem; }
   .page-shell #top::before { left: -20%; top: 18%; width: 24rem; height: 24rem; }
-  .page-shell #app > div > div:nth-child(3) > div:first-child { min-height: 250px; padding: .75rem; }
-  .page-shell #app > div > div:nth-child(3) > div:first-child img { max-height: 250px; }
-  .page-shell #app > div > div:nth-child(3) > div:nth-child(2) { grid-auto-rows: minmax(220px, 1fr); }
-  .page-shell #app > div > div:nth-child(3) > div:nth-child(2) > div { min-height: 220px; padding: .75rem; }
-  .page-shell #app > div > div:nth-child(3) > div:nth-child(2) img { max-height: 290px; }
+  .page-shell #app > div > div:nth-child(3) > div:first-child { min-height: 205px; padding: .5rem; }
+  .page-shell #app > div > div:nth-child(3) > div:first-child img { max-height: 205px; }
+  .page-shell #app > div > div:nth-child(3) > div:nth-child(2) { grid-auto-rows: minmax(175px, 1fr); }
+  .page-shell #app > div > div:nth-child(3) > div:nth-child(2) > div { min-height: 175px; padding: .5rem; }
+  .page-shell #app > div > div:nth-child(3) > div:nth-child(2) img { max-height: 235px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
