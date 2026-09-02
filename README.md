@@ -14,6 +14,8 @@ payments, and trackable orders.
 - 14-day Trial, Seller, and Pro Seller pricing comparison
 - Included AI creation credits with pay-as-you-go extra credits
 - Zero platform fee on seller sales
+- USD pricing shown by default with KES, NGN, and ZAR alternatives
+- FAQ section covering trial, card, AI credit, and sales-fee questions
 - Monthly/annual billing toggle
 - Currency switcher for KES, USD, NGN, and ZAR
 - Google Forms waitlist CTAs
