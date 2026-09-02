@@ -1,1 +1,2 @@
 - [Render static hosting](render-static-sites.md) — the landing page deploys as a Render Static Site; its public Base URL is the deployed HTTPS hostname.
+- [Social channel branding](social-channel-branding.md) — use local user-supplied assets and inline brand marks when external logo search is unavailable.
